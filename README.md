@@ -1,2 +1,2 @@
 # MPI
-MPI
+MPI introductory activity
