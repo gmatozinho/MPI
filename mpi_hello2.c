@@ -22,10 +22,16 @@ int main(int argc, char *argv[])
     if(rank==0)
     {
         strcpy(vector,"Ola, eu sou o processo 0\n");
-        MPI_Send(&vector,100,MPI_CHAR,1,123,MPI_COMM_WORLD);
+        
+        for(int i = 1; i < size; i++)
+        {
+            /* code */
+            MPI_Send(&vector, 100, MPI_CHAR, i, 123, MPI_COMM_WORLD);
+        }
+        
     }else{
         MPI_Recv(vector,100,MPI_CHAR,0,123,MPI_COMM_WORLD,MPI_STATUS_IGNORE);
-        printf("Rank 1:%s\n",vector);
+        printf("Rank %d:%s\n",rank,vector);
     }
 
 
