@@ -9,11 +9,17 @@ compile_mpi_hello: mpi_hello.c
 compile_mpi_hello2: mpi_hello2.c
 	mpicc -o mpi_hello2 mpi_hello2.c
 
+compile_mpi_sumvec: mpi_sum_vect.c
+	mpicc -o mpi_sum_vect mpi_sum_vect.c
+
 executar_1:
 	mpirun -np 4 mpi_hello
 
 executar_2:
 	mpirun -np 4 mpi_hello2
+
+executar_sumvec:	
+	mpirun -np 4 mpi_sum_vect
 
 
 
