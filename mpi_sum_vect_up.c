@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
             MPI_Send(&vetor_snd[pos_vetor], part, MPI_INT, rank_i, 123, MPI_COMM_WORLD);
         }        
     }
+    
     int part = TAM_VET / size;
     int sum = 0;
     MPI_Recv(vetor_rcv, part, MPI_INT, 0, 123, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
