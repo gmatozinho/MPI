@@ -52,5 +52,5 @@ Mkfile.old
 dkms.conf
 mpi_hello
 mpi_hello2
-mpi_sum_vect_
+mpi_sum_vect
 mpi_run_vect
