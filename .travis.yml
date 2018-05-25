@@ -1,5 +1,4 @@
 language: c
 install:
   - sudo apt-get install libcr-dev mpich2 mpich2-doc
-compiler: gcc
 script: make
