@@ -1,11 +1,8 @@
 #include <mpi.h>
 #include <stdio.h>
 
-
-/* Compilar:
-    mpicc mpi_hello.c -o mpi_hello -Wall
-Executar:
-    mpirun -np 4 mpi_hello */
+/* 
+This code prints all started threads */
     
 int main(int argc, char *argv[])
 {

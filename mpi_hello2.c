@@ -2,10 +2,11 @@
 #include <stdio.h>
 #include <string.h>
 
-/* Compilar:
-    mpicc mpi_hello2.c -o mpi_hello2 -Wall
-Executar:
-    mpirun -np 4 mpi_hello2 */
+
+/* 
+This code prints all started threads 
+and passes a message from thread 0 to all other threads
+*/
 
 int main(int argc, char *argv[])
 {
