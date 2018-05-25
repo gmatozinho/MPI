@@ -1,5 +1,5 @@
-CC=gcc 
-CFLAGS=-Wall
+CC=mpicc
+CFLAGS=-Wall -DMPI
 
 compile_all:	compile_mpi_hello compile_mpi_hello2 compile_mpi_runvec compile_mpi_sumvec
 
