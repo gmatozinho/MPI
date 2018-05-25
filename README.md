@@ -1,2 +1,3 @@
 # MPI
-MPI introductory activity
+
+Repository contains codes for introduction to mpi
