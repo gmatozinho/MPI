@@ -1,5 +1,5 @@
 CC=mpicc
-CFLAGS=-Wall -DMPI
+CFLAGS=-Wall -DMPI -std=gnu99
 
 compile_all:	compile_mpi_hello compile_mpi_hello2 compile_mpi_runvec compile_mpi_sumvec
 
