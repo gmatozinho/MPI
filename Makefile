@@ -34,7 +34,7 @@ execute_min_vect:
 	mpirun -np 4 mpi_min_vect
 
 clear:
-	rm -rf mpi_hello mpi_hello2 mpi_run_vect mpi_sum_vect 
+	rm -rf mpi_hello mpi_hello2 mpi_run_vect mpi_sum_vect mpi_min_vect
 
 
 
