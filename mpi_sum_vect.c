@@ -13,14 +13,14 @@ int main(int argc, char *argv[])
     int size, rank;
 
     int vetor_snd[] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120};
-    int vetor_rcv[TAM_VET / 2];
-    int sum_ind[1];
+    int sum_ind;
 
     MPI_Init(&argc, &argv);
 
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
+    int vetor_rcv[TAM_VET / size];
     printf("Rank %d de um total de %d\n", rank, size);
 
     if (rank == 0)
@@ -31,35 +31,41 @@ int main(int argc, char *argv[])
 
         int pos_vetor;
 
-        for (int rank_i = 0; rank_i < size; rank_i++)
+        for (int rank_i = 1; rank_i < size; rank_i++)
         {
             pos_vetor = rank_i * part;
             printf("SEND %d\t%d\t%d\n", rank_i, part, pos_vetor);
             MPI_Send(&vetor_snd[pos_vetor], part, MPI_INT, rank_i, 123, MPI_COMM_WORLD);
-        }        
-    }
-    
-    int part = TAM_VET / size;
-    int sum = 0;
-    MPI_Recv(vetor_rcv, part, MPI_INT, 0, 123, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-    for (int i = 0; i < part; i++)
-    {
-        sum += vetor_rcv[i];
-    }
-    printf("Rank %d\t%d\n", rank, sum);
+        }
 
-    MPI_Send(&sum, 1, MPI_INT, 0, 124, MPI_COMM_WORLD);
-    
-    if(rank==0)
-    {
         int sum = 0;
-        for (int rank_i = 0; rank_i < size; rank_i++)
+        for (int i = 0; i < part; i++)
         {
-            MPI_Recv(sum_ind, 1, MPI_INT, rank_i, 124, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-            sum+=sum_ind[0];
+            sum += vetor_snd[i];
+        }
+        printf("Rank %d\t%d\n", rank, sum);
+
+        for (int rank_i = 1; rank_i < size; rank_i++)
+        {
+            MPI_Recv(&sum_ind, 1, MPI_INT, rank_i, 124, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            sum += sum_ind;
         }
 
         printf("Resultado %d\n", sum);
+        
+    }else{
+    
+        int part = TAM_VET / size;
+        int sum = 0;
+        MPI_Recv(vetor_rcv, part, MPI_INT, 0, 123, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        for (int i = 0; i < part; i++)
+        {
+            sum += vetor_rcv[i];
+        }
+
+        printf("Rank %d\t%d\n", rank, sum);
+
+        MPI_Send(&sum, 1, MPI_INT, 0, 124, MPI_COMM_WORLD);
     }
     
     MPI_Finalize();
