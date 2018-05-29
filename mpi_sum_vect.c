@@ -8,6 +8,17 @@ This code passes a part of the vector for each thread to add its values
 
 #define TAM_VET 12
 
+int sum_pos(int* vetor_snd,int part)
+{
+    int sum = 0;
+    for (int i = 0; i < part; i++)
+    {
+        sum += vetor_snd[i];
+    }
+
+    return sum;
+}
+
 int main(int argc, char *argv[])
 {
     int size, rank;
@@ -38,11 +49,8 @@ int main(int argc, char *argv[])
             MPI_Send(&vetor_snd[pos_vetor], part, MPI_INT, rank_i, 123, MPI_COMM_WORLD);
         }
 
-        int sum = 0;
-        for (int i = 0; i < part; i++)
-        {
-            sum += vetor_snd[i];
-        }
+        int sum = sum_pos(vetor_snd,part);
+
         printf("Rank %d\t%d\n", rank, sum);
 
         for (int rank_i = 1; rank_i < size; rank_i++)
@@ -52,16 +60,13 @@ int main(int argc, char *argv[])
         }
 
         printf("Resultado %d\n", sum);
-        
+
     }else{
     
         int part = TAM_VET / size;
-        int sum = 0;
         MPI_Recv(vetor_rcv, part, MPI_INT, 0, 123, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-        for (int i = 0; i < part; i++)
-        {
-            sum += vetor_rcv[i];
-        }
+
+        int sum = sum_pos(vetor_rcv,part);
 
         printf("Rank %d\t%d\n", rank, sum);
 
