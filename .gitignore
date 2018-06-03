@@ -57,3 +57,4 @@ mpi_run_vect
 mpi_sum_reduce
 mpi_monte_carlo
 mpi_montecarlo_reduce
+mpi_min_vect
