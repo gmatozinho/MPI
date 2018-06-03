@@ -18,6 +18,10 @@ compile_mpi_sumvec: mpi_sum_vect.c
 compile_mpi_minvec: mpi_min_vect.c
 	${CC} ${CFLAGS} -o mpi_min_vect mpi_min_vect.c
 
+
+compile_mpi_sumreduce: mpi_sum_reduce.c
+	${CC} ${CFLAGS} -o mpi_sum_reduce mpi_sum_reduce.c
+
 execute_mpi_hello:
 	mpirun -np 4 mpi_hello
 
@@ -33,8 +37,11 @@ execute_sum_vect:
 execute_min_vect:	
 	mpirun -np 4 mpi_min_vect
 
+execute_mpi_sumreduce:	
+	mpirun -np 4 mpi_sum_reduce
+
 clear:
-	rm -rf mpi_hello mpi_hello2 mpi_run_vect mpi_sum_vect mpi_min_vect
+	rm -rf mpi_hello mpi_hello2 mpi_run_vect mpi_sum_vect mpi_min_vect mpi_sum_reduce
 
 
 
