@@ -5,6 +5,8 @@
 #include <math.h>
 #include <stdlib.h>
 
+#define MASTER 0
+
 int sum_circle_count(int part)
 {
     double x,y;
@@ -31,7 +33,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    int size, rank;
+    int size, rank, localCircleCount, circleCountsum;
 
     int npoints = atoi(argv[1]);;//atoi(argv[2]);
 
@@ -44,27 +46,15 @@ int main(int argc, char *argv[])
 
     int part = npoints/size;
 
-    if(rank == 0)
+    localCircleCount = sum_circle_count(part);
+    MPI_Reduce(&localCircleCount, &circleCountsum, 1, MPI_INT, MPI_SUM, MASTER, MPI_COMM_WORLD);
+
+    if(rank==MASTER)
     {
-        int sum_ind;
-        int sum = sum_circle_count(part);
-        printf("Resultado de 0 foi %d\n", sum);
-
-        for (int rank_i = 1; rank_i < size; rank_i++)
-        {
-            MPI_Recv(&sum_ind, 1, MPI_INT, rank_i, 124, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-            sum += sum_ind;
-        }
-
-        double result = 4.0*sum/npoints;
+        double result = 4.0*circleCountsum/npoints;        
         printf("Resultado %f\n", result);
     }
-    else{
-        int sum = sum_circle_count(part);
-        printf("Resultado de %d foi %d\n",rank, sum);
-        MPI_Send(&sum, 1, MPI_INT, 0, 124, MPI_COMM_WORLD);
-    }
-
+    
     MPI_Finalize();
     return 0;
 }
