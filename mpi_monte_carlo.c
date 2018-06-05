@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
     }
     else{
         int sum = sum_circle_count(part);
-        printf("Resultado de %d foi %d\n",rank, sum);
+        //printf("Resultado de %d foi %d\n",rank, sum);
         MPI_Send(&sum, 1, MPI_INT, 0, 124, MPI_COMM_WORLD);
     }
 

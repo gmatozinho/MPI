@@ -28,6 +28,8 @@ int sum_circle_count(int part)
 
 int main(int argc, char *argv[])
 {
+    clock_t begin = clock();
+
     if (argc != 2) {
         fprintf(stderr, "Usage: avg num_elements_per_proc\n");
         exit(1);
@@ -35,7 +37,7 @@ int main(int argc, char *argv[])
 
     int size, rank, localCircleCount, circleCountsum;
 
-    int npoints = atoi(argv[1]);;//atoi(argv[2]);
+    int npoints = atoi(argv[1]);
 
     srand(time(NULL));
 
@@ -51,10 +53,18 @@ int main(int argc, char *argv[])
 
     if(rank==MASTER)
     {
-        double result = 4.0*circleCountsum/npoints;        
-        printf("Resultado %f\n", result);
+        double result = 4.0*circleCountsum/npoints;
+        printf("Resultado %f \n", result);
     }
     
     MPI_Finalize();
+
+    clock_t end = clock();
+    if (rank == MASTER)
+    {
+        double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+        printf("Time %f\n", time_spent);
+    }
+
     return 0;
 }
