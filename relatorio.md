@@ -1,5 +1,7 @@
 # Monte Carlo
 
+![Sistema](https://i.imgur.com/5DWrMBX.png)
+
 ## DuringTime
 
 1 process => 4.371
