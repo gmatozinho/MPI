@@ -59,7 +59,7 @@ execute_mpi_montecarlo_reduce:
 	mpirun -np 16 mpi_montecarlo_reduce 100000000
 
 clear:
-	rm -rf mpi_hello mpi_hello2 mpi_run_vect mpi_sum_vect mpi_min_vect mpi_sum_reduce mpi_monte_carlo mpi_montecarlo_reduce 
+	rm -rf mpi_hello mpi_hello2 mpi_run_vect mpi_sum_vect mpi_min_vect mpi_sum_reduce mpi_monte_carlo mpi_montecarlo_reduce monte_carlo
 
 
 
