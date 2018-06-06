@@ -1,7 +1,7 @@
 CC=mpicc
 CFLAGS= -Wall -std=c99
 
-compile_all:	compile_mpi_hello compile_mpi_hello2 compile_mpi_runvec compile_mpi_sumvec compile_mpi_minvec compile_mpi_sumvec_reduce compile_mpi_monte_carlo compile_mpi_montecarlo_reduce
+compile_all:	compile_mpi_hello compile_mpi_hello2 compile_mpi_runvec compile_mpi_sumvec compile_mpi_minvec compile_mpi_sumvec_reduce compile_mpi_monte_carlo compile_mpi_montecarlo_reduce compile_montecarlo
 
 compile_mpi_hello: mpi_hello.c
 	${CC} ${CFLAGS}  -o mpi_hello mpi_hello.c
@@ -56,7 +56,7 @@ execute_mpi_monte_carlo:
 	mpirun -np 4 mpi_monte_carlo 100000000
 
 execute_mpi_montecarlo_reduce:
-	mpirun -np 16 mpi_montecarlo_reduce 100000000
+	mpirun -np 4 mpi_montecarlo_reduce 100000000
 
 clear:
 	rm -rf mpi_hello mpi_hello2 mpi_run_vect mpi_sum_vect mpi_min_vect mpi_sum_reduce mpi_monte_carlo mpi_montecarlo_reduce monte_carlo
