@@ -159,7 +159,13 @@ int main(int argc, char *argv[])
 		init_vector(v_in_size, v_in);
 		//print_vector(v_in_size, v_in);
 		master(nprocs, elem, block_size, v_in_size, v_in, &found);
-		printf("Found=%d Rank:%d\n", found[0],found[1]);
+		if(found[0])
+		{
+			printf("Found by Rank:%d\n", found[1]);
+		}else{
+			printf("Not found\n");
+		}
+		
 		free(v_in);
 	}
 	else
