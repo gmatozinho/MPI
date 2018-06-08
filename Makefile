@@ -54,13 +54,13 @@ execute_mpi_sumvec_reduce:
 	mpirun -np 4 mpi_sum_reduce
 
 execute_monte_carlo:
-	./monte_carlo 100000000
+	./monte_carlo 1000000000
 
 execute_mpi_monte_carlo:
-	mpirun -np 4 mpi_monte_carlo 100000000
+	mpirun -np 4 mpi_monte_carlo 1000000000
 
 execute_mpi_montecarlo_reduce:
-	mpirun -np 4 mpi_montecarlo_reduce 100000000
+	mpirun -np 4 mpi_montecarlo_reduce 1000000000
 
 execute_mpi_master_slave-busca:
 	mpirun -np 4 mpi_master_slave-busca 100 10 1000000000
