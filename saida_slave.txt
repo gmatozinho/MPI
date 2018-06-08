@@ -1,0 +1,55 @@
+# Busca Elemento
+
+![Sistema](https://i.imgur.com/tfumhKk.png)
+
+BlockSize 10000
+VecSize 1000000000
+Elem 851242
+
+# Result
+
+1 process => Found
+
+2 process => Found by Rank:1
+
+4 process => Found by Rank:2
+
+8 process => Found by Rank:7
+
+16 process => Found by Rank:11
+
+## DuringTime
+
+1 process => 40.075
+
+2 process => 15.249
+
+4 process => 17.236
+
+8 process => 20.307
+
+16 process => 19.962
+
+## SpeedUP
+
+1 process => 40.075/40.075 = 1
+
+2 process => 40.075/15.249 = 2,628041183028395
+
+4 process => 40.075/17.236 = 2,325075423532142
+
+8 process => 40.075/20.307 = 1,97345742847294
+
+16 process => 40.075/19.962 = 2,007564372307384
+
+## Efficiency
+
+1 process => 1/1 = 1
+
+2 process => 2,628041183028395/2 = 1,314020591514198
+
+4 process => 2,325075423532142/4 = 0,5812688558830355
+
+8 process => 1,97345742847294/8 = 0,2466821785591175
+
+16 process => 2,007564372307384/16 = 0,1254727732692115

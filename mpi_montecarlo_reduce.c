@@ -28,8 +28,6 @@ int sum_circle_count(int part)
 
 int main(int argc, char *argv[])
 {
-    clock_t begin = clock();
-
     if (argc != 2) {
         fprintf(stderr, "Usage: avg num_elements_per_proc\n");
         exit(1);
@@ -58,13 +56,5 @@ int main(int argc, char *argv[])
     }
     
     MPI_Finalize();
-
-    clock_t end = clock();
-    if (rank == MASTER)
-    {
-        double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-        printf("Time %f\n", time_spent);
-    }
-
     return 0;
 }
