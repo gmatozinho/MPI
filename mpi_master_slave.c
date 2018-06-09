@@ -70,14 +70,13 @@ void master(nprocs, elem, block_size, v_in_size, v_in, found)
 	{
 		MPI_Recv(&result, 1, MPI_INT, MPI_ANY_SOURCE, TAG_RESULT, MPI_COMM_WORLD, &status);
 		found[0] = found[0] || result;
-	}
-
-	if(found[0]){
-		if(found[1]==-1)
-		{
-			found[1] = status.MPI_SOURCE;
+		if(found[0]){
+			if(found[1]==-1)
+			{
+				found[1] = status.MPI_SOURCE;
+			}
 		}
-	}
+	}	
 	
 	//printf("4-master sends termination TAG\n");
 	for (rank_i=1; rank_i<nprocs; rank_i++)
