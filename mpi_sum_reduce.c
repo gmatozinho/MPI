@@ -1,4 +1,4 @@
-// Program that computes the average of an array of elements in parallel using
+// Program that computes the sum of an array of elements in parallel using
 // MPI_Reduce.
 //
 #include <stdio.h>
