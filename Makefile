@@ -36,6 +36,9 @@ compile_mpi_montecarlo_reduce: mpi_montecarlo_reduce.c
 compile_mpi_master_slave: mpi_master_slave.c
 	${CC} ${CFLAGS} -o mpi_master_slave mpi_master_slave.c
 
+compile_mpi_master_slave_desviopadrao: mpi_master_slave_desviopadrao.c
+	${CC} ${CFLAGS} -o mpi_master_slave_desviopadrao mpi_master_slave_desviopadrao.c
+
 execute_mpi_hello:
 	mpirun -np 4 mpi_hello
 
@@ -69,8 +72,11 @@ execute_mpi_montecarlo_reduce:
 execute_mpi_master_slave:
 	mpirun -np 4 mpi_master_slave 100 10 1000000000
 
+execute_mpi_master_slave_desviopadrao:
+	mpirun -np 4 mpi_master_slave_desviopadrao 100 1000000
+
 clear:
-	rm -rf mpi_hello mpi_hello2 mpi_run_vect mpi_sum_vect mpi_min_vect mpi_sum_reduce mpi_monte_carlo mpi_montecarlo_reduce monte_carlo mpi_master_slave search_in_vec mpi_encontra_minimo mpi_ordenacao
+	rm -rf mpi_hello mpi_hello2 mpi_run_vect mpi_sum_vect mpi_min_vect mpi_sum_reduce mpi_monte_carlo mpi_montecarlo_reduce monte_carlo mpi_master_slave search_in_vec mpi_encontra_minimo mpi_ordenacao mpi_master_slave_desviopadrao
 
 
 
