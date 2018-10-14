@@ -2,7 +2,7 @@
 
 # Description
 
-Repository contains codes for introduction to mpi
+Repository contains codes in c with library mpi for parallel programming
 
 # How to run
 
